@@ -1,6 +1,8 @@
 package com.example.conversorunidades1
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.pantalla_conversion.*
 import kotlin.math.pow
@@ -15,14 +17,100 @@ class PantallaConversioin : AppCompatActivity() {
     var unidadDestino: String = ""
     var resultado: Double = 0.00
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.pantalla_conversion)
+        val intent: Intent = intent
+        var posicion: Int = intent.getIntExtra("posicion", 0)
+
+
+        when (posicion) {
+            0 -> {
+                setTitle(R.string.tituloBytes)
+                val spinnerAdapter: ArrayAdapter<*> = ArrayAdapter.createFromResource(this, R.array.unidadesBytes, R.layout.pantalla_conversion)
+                spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                spinnerUnidadesOrigen.adapter = spinnerAdapter
+                spinnerUnidadesDestino.adapter = spinnerAdapter
+
+            }
+            1 -> {
+                setTitle(R.string.tituloMetros)
+                val spinnerAdapter: ArrayAdapter<*> = ArrayAdapter.createFromResource(this, R.array.unidadesMetros, R.layout.pantalla_conversion)
+                spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                spinnerUnidadesOrigen.adapter = spinnerAdapter
+                spinnerUnidadesDestino.adapter = spinnerAdapter
+            }
+            2 -> {
+                setTitle(R.string.tituloLitros)
+                val spinnerAdapter: ArrayAdapter<*> = ArrayAdapter.createFromResource(this, R.array.unidadesLitros, R.layout.pantalla_conversion)
+                spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                spinnerUnidadesOrigen.adapter = spinnerAdapter
+                spinnerUnidadesDestino.adapter = spinnerAdapter
+            }
+            3 -> {
+                setTitle(R.string.tituloKilos)
+                val spinnerAdapter: ArrayAdapter<*> = ArrayAdapter.createFromResource(this, R.array.unidadesGramos, R.layout.pantalla_conversion)
+                spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                spinnerUnidadesOrigen.adapter = spinnerAdapter
+                spinnerUnidadesDestino.adapter = spinnerAdapter
+
+            }
+            4 -> {
+                setTitle(R.string.tituloGrados)
+                val spinnerAdapter: ArrayAdapter<*> = ArrayAdapter.createFromResource(this, R.array.unidadesGrados, R.layout.pantalla_conversion)
+                spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                spinnerUnidadesOrigen.adapter = spinnerAdapter
+                spinnerUnidadesDestino.adapter = spinnerAdapter
+            }
+
+        }
+
+        buttonConvertir.setOnClickListener {
+            cantidad = obtenerCantidad()
+            if (cantidad != 0.00){
+                obtenerUnidadOrigen()
+                if(origen < 1) {
+                    textViewResultado.setText(R.string.errorOrigen)
+                }else{
+                    textViewResultado.text = ""
+                    obtenerUnidadDestino()
+                    if(destino < 1){
+                        textViewResultado.setText(R.string.errorDestino)
+                    }else{
+                        textViewResultado.text = ""
+                        //calcular(cantidad, origen, destino)
+                    }
+                }
+            }
+        }
 
         buttonVolver.setOnClickListener{
             finish()
         }
 
+    }
+
+    private fun obtenerCantidad(): Double{
+        if(textInputCantidad.text.isNullOrBlank() || textInputCantidad.text.toString().toDouble() == 0.00 ){
+            textViewResultado.setText(R.string.errorCantidad)
+            return 0.00
+        }else{
+            val input: Double = textInputCantidad.text.toString().toDouble()
+            println("**************La cantidad introducida es: ${input} *********************")
+            return input
+        }
+    }
+
+    private fun obtenerUnidadOrigen(){
+        origen = spinnerUnidadesOrigen.selectedItemPosition
+        unidadOrigen = spinnerUnidadesOrigen.getItemAtPosition(origen).toString()
+    }
+
+    private fun obtenerUnidadDestino(){
+        destino = spinnerUnidadesDestino.selectedItemPosition
+        unidadDestino = spinnerUnidadesDestino.getItemAtPosition(destino).toString()
     }
 
     private fun calcularTemperatura(cantidad: Double, origen: Int, destino: Int){
@@ -114,7 +202,7 @@ class PantallaConversioin : AppCompatActivity() {
                 textViewResultado.text = (cantidad.toString() + " " + unidadOrigen + " = " + resultado + " " + unidadDestino)
                 resultado = 0.00
             }else if(origen > 2 && destino == 1){
-                resultado = (cantidad * 8) *(1024.00.pow((origen-1)-destino))
+                resultado = (cantidad * 8) *(1024.00.pow((origen - 1) - destino))
                 textViewResultado.text = (cantidad.toString() + " " + unidadOrigen + " = " + resultado + " " + unidadDestino)
                 resultado = 0.00
             }else {

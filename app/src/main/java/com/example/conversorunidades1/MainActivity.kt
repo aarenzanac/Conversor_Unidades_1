@@ -24,12 +24,14 @@ class MainActivity : AppCompatActivity() {
         val adaptador = Adapter(this, medidas)
         grid.adapter = adaptador
 
+
         grid.onItemClickListener = AdapterView.OnItemClickListener { parent, view, posicion, id ->
-
             Toast.makeText(this, "Ha seleccionado: " + medidas.get(posicion).nombre, Toast.LENGTH_SHORT).show()
+            var intent: Intent = Intent(this, PantallaConversioin::class.java)
+            intent.putExtra("posicion", posicion)
+            startActivity(intent)
 
-            val intentConversion = Intent(this, PantallaConversioin::class.java)
-            startActivity(intentConversion)
+
         }
     }
 }

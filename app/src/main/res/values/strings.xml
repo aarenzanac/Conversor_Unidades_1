@@ -20,4 +20,9 @@
     <string name="errorCantidad">Debe introducir una cantidad a convertir.</string>
     <string name="app_conversion">Conversor de XXXXXXX</string>
     <string name="volver">Volver</string>
+    <string name="tituloBytes">Conversor de Capacidad (Bytes)</string>
+    <string name="tituloKilos">Conversor de Masa (Gramos)</string>
+    <string name="tituloLitros">Conversor de Volumen (Litros)</string>
+    <string name="tituloMetros">Conversor de Distancia (Metros)</string>
+    <string name="tituloGrados">Conversor de Temperatura (Grados)</string>
 </resources>

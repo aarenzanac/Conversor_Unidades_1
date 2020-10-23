@@ -9,21 +9,6 @@
     android:theme="@style/Theme.MaterialComponents"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/buttonVolver2"
-        android:layout_width="167dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="31dp"
-        android:background="#3F51B5"
-        android:text="@string/volver"
-        android:textColor="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.905"
-        app:layout_constraintStart_toEndOf="@+id/buttonConvertir"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textViewCantidad"
         android:layout_width="wrap_content"
@@ -150,6 +135,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.159"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/buttonVolver2"
+        android:layout_width="167dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="31dp"
+        android:background="#3F51B5"
+        android:text="@string/volver"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.905"
+        app:layout_constraintStart_toEndOf="@+id/buttonConvertir"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
