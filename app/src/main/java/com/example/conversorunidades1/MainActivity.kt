@@ -1,5 +1,6 @@
 package com.example.conversorunidades1
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.AdapterView
 import android.widget.GridView
@@ -13,11 +14,11 @@ class MainActivity : AppCompatActivity() {
 
         var medidas = ArrayList<Medida>()
 
-        medidas.add(Medida("Capacidad (Bytes)", R.drawable.bytes))
-        medidas.add(Medida("Medida (Metros)", R.drawable.metros))
-        medidas.add(Medida("Volumen (Litros)", R.drawable.litros))
-        medidas.add(Medida("Masa (Kilos)", R.drawable.kilos))
-        medidas.add(Medida("Temperatura (Grados)", R.drawable.grados))
+        medidas.add(Medida(getString(R.string.capacidad), R.drawable.bytes))
+        medidas.add(Medida(getString(R.string.medida), R.drawable.metros))
+        medidas.add(Medida(getString(R.string.volumen), R.drawable.litros))
+        medidas.add(Medida(getString(R.string.masa), R.drawable.kilos))
+        medidas.add(Medida(getString(R.string.temperatura), R.drawable.grados))
 
         var grid: GridView = findViewById(R.id.grid)
         val adaptador = Adapter(this, medidas)
@@ -25,7 +26,10 @@ class MainActivity : AppCompatActivity() {
 
         grid.onItemClickListener = AdapterView.OnItemClickListener { parent, view, posicion, id ->
 
-            Toast.makeText(this, medidas.get(posicion).nombre, Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Ha seleccionado: " + medidas.get(posicion).nombre, Toast.LENGTH_SHORT).show()
+
+            val intentConversion = Intent(this, PantallaConversioin::class.java)
+            startActivity(intentConversion)
         }
     }
 }
