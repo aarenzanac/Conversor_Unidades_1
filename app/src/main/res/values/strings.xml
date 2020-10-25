@@ -27,4 +27,5 @@
     <string name="tituloGrados">Conversor de Temperatura (Grados)</string>
     <string name="salir">Salir</string>
     <string name="imagenunidades">ImagenUnidades</string>
+    <string name="seleccione_una_opcion">Seleccione una opción:</string>
 </resources>

@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    tools:context=".MainActivity">
 
     <GridView
         android:id="@+id/grid"
         android:layout_width="match_parent"
-        android:layout_height="562dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
         android:background="@color/white"
         android:numColumns="2" />
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/textViewSeleccion"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:paddingTop="38dp"
+        android:text="@string/seleccione_una_opcion"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:theme="@style/AppTheme" />
+
+</RelativeLayout>
