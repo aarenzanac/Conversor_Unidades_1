@@ -33,7 +33,7 @@ class Adapter(var context: Context, items: ArrayList<Medida>): BaseAdapter(){
 
     override fun getView(posicion: Int, convertView: View?, parent: ViewGroup?): View {
         var vista = convertView
-        var holder: ViewHolder? = null
+        var holder: ViewHolder?
 
         //SI LA VISTA ESTA VACÍA, QUE LA CREE
         if(vista == null){
@@ -43,7 +43,7 @@ class Adapter(var context: Context, items: ArrayList<Medida>): BaseAdapter(){
         }else{
             holder = vista.tag as? ViewHolder
         }
-        val item = items?.get(posicion) as? Medida
+        val item = items?.get(posicion)
 
         //RELLENA LA VISTA
         holder?.nombre?.text = item?.nombre

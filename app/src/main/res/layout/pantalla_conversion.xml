@@ -29,21 +29,23 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="146dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="140dp"
         android:layout_marginTop="12dp"
+        android:focusedByDefault="false"
         android:hint="@string/cantidad"
+        android:textColorHint="@color/black"
         app:boxStrokeColor="@android:color/black"
         app:hintTextColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCantidad"
-        android:focusedByDefault="false">
+        app:layout_constraintTop_toBottomOf="@+id/textViewCantidad">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputCantidad"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:textColor="@android:color/black"/>
+            android:inputType="numberDecimal|numberSigned"
+            android:textColor="@android:color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
     <TextView
@@ -139,7 +141,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonVolver2"
+        android:id="@+id/buttonVolver"
         android:layout_width="167dp"
         android:layout_height="47dp"
         android:layout_marginStart="31dp"
@@ -166,4 +168,17 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.644" />
+
+    <ImageView
+        android:id="@+id/imageViewConversion"
+        android:layout_width="75dp"
+        android:layout_height="61dp"
+        android:contentDescription="@string/imagenunidades"
+        app:layout_constraintBottom_toTopOf="@+id/textViewUnidades"
+        app:layout_constraintEnd_toStartOf="@+id/textInputLayoutCantidad"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCantidad"
+        app:layout_constraintVertical_bias="0.317"
+        app:srcCompat="@drawable/bytes" />
 </androidx.constraintlayout.widget.ConstraintLayout>
