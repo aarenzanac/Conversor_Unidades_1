@@ -10,12 +10,15 @@ import android.widget.TextView
 
 class Adapter(var context: Context, items: ArrayList<Medida>): BaseAdapter(){
 
+    //CREO EL ARRAY QUE CONTENDRÁ LOS OBJETOS DE TIPO MEDIDA
     var items: ArrayList<Medida>? = null
 
+    //CONSTRUCTOR
     init{
         this.items = items
     }
 
+    //IMPLEMENTO LOS MÉTODOS QUE OBLIGA A RECARGAR AL HEREDAR DE BASEADAPTER
     override fun getCount(): Int {
         return items?.count()!!
     }
@@ -32,6 +35,7 @@ class Adapter(var context: Context, items: ArrayList<Medida>): BaseAdapter(){
         var vista = convertView
         var holder: ViewHolder? = null
 
+        //SI LA VISTA ESTA VACÍA, QUE LA CREE
         if(vista == null){
             vista = LayoutInflater.from(context).inflate(R.layout.templategrid, null)
             holder = ViewHolder(vista)
@@ -40,6 +44,8 @@ class Adapter(var context: Context, items: ArrayList<Medida>): BaseAdapter(){
             holder = vista.tag as? ViewHolder
         }
         val item = items?.get(posicion) as? Medida
+
+        //RELLENA LA VISTA
         holder?.nombre?.text = item?.nombre
         holder?.imagen?.setImageResource(item?.imagen!!)
 

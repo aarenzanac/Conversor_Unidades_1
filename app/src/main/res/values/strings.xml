@@ -25,4 +25,6 @@
     <string name="tituloLitros">Conversor de Volumen (Litros)</string>
     <string name="tituloMetros">Conversor de Distancia (Metros)</string>
     <string name="tituloGrados">Conversor de Temperatura (Grados)</string>
+    <string name="salir">Salir</string>
+    <string name="imagenunidades">ImagenUnidades</string>
 </resources>
