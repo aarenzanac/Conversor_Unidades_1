@@ -128,13 +128,13 @@ class PantallaConversioin : AppCompatActivity() {
                                 calcularBytes(cantidad, origen, destino)
                             }
                             1 -> {
-                                calcularMetros(cantidad, origen, destino)
+                                calcularGramosLitrosMetros(cantidad, origen, destino)
                             }
                             2 -> {
-                                calcularLitros(cantidad, origen, destino)
+                                calcularGramosLitrosMetros(cantidad, origen, destino)
                             }
                             3 -> {
-                                calcularGramos(cantidad, origen, destino)
+                                calcularGramosLitrosMetros(cantidad, origen, destino)
                             }
                             4 -> {
                                 calcularTemperatura(cantidad, origen, destino)
@@ -207,7 +207,7 @@ class PantallaConversioin : AppCompatActivity() {
         }
     }
 
-    private fun calcularGramos(cantidad: Double, origen: Int, destino: Int){
+    private fun calcularGramosLitrosMetros(cantidad: Double, origen: Int, destino: Int){
 
         if(origen == destino){
             textViewResultado.text = (cantidad.toString() + " " + unidadOrigen + " = " +cantidad.toString() + " " + unidadDestino)
@@ -228,47 +228,6 @@ class PantallaConversioin : AppCompatActivity() {
         }
     }
 
-    private fun calcularLitros(cantidad: Double, origen: Int, destino: Int){
-
-        if(origen == destino){
-            textViewResultado.text = (cantidad.toString() + " " + unidadOrigen + " = " +cantidad.toString() + " " + unidadDestino)
-        }else if(origen > destino ){
-            resultado = cantidad*(10.00.pow(origen - destino))
-            textViewResultado.text = (cantidad.toString() + " " + unidadOrigen + " = " + resultado + " " + unidadDestino)
-            resultado = 0.00
-        }else{
-            var operacion: Double = 0.00        //Variables para calcular todas las divisiones. Donde se almacena el resultado de dividir cada iteracion entre 1024
-            var cantidadDivision: Double = cantidad ////Variables para calcular todas las divisiones. Temporal para el bucle for
-            for(num in origen..destino-1) {
-                operacion = cantidadDivision / 10.00
-                cantidadDivision = operacion
-            }
-            resultado = cantidadDivision
-            textViewResultado.text = (cantidad.toString() + " " + unidadOrigen + " = " + resultado + " " + unidadDestino)
-            resultado = 0.00
-        }
-    }
-
-    private fun calcularMetros(cantidad: Double, origen: Int, destino: Int){
-
-        if(origen == destino){
-            textViewResultado.text = (cantidad.toString() + " " + unidadOrigen + " = " +cantidad.toString() + " " + unidadDestino)
-        }else if(origen > destino ){
-            resultado = cantidad*(10.00.pow(origen - destino))
-            textViewResultado.text = (cantidad.toString() + " " + unidadOrigen + " = " + resultado + " " + unidadDestino)
-            resultado = 0.00
-        }else{
-            var operacion: Double = 0.00        //Variables para calcular todas las divisiones. Donde se almacena el resultado de dividir cada iteracion entre 1024
-            var cantidadDivision: Double = cantidad ////Variables para calcular todas las divisiones. Temporal para el bucle for
-            for(num in origen..destino-1) {
-                operacion = cantidadDivision / 10.00
-                cantidadDivision = operacion
-            }
-            resultado = cantidadDivision
-            textViewResultado.text = (cantidad.toString() + " " + unidadOrigen + " = " + resultado + " " + unidadDestino)
-            resultado = 0.00
-        }
-    }
 
     /*PARA EL CASO DE BYTES, HE CONSIDERADO LO SIGUIENTE.
     COMO LA CONVERSIÓN NO ES LINEAL PORQUE EL PRIMER PASO DE BIT A BYTE ES X8, HE CONSIDERADO TRES SUPUESTOS PARA CADA SENTIDO DE CONVERSIÓN
